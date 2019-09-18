@@ -1,0 +1,63 @@
+﻿@model Infoline.DL.mpm.Models.HomeListViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pivot Demo</title>
+    <!-- external libs from cdnjs -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- PivotTable.js libs from ../dist -->
+    <link rel="stylesheet" type="text/css" href="../dist/pivot.css">
+    <script type="text/javascript" src="../dist/pivot.js"></script>
+    <style>
+        body {
+            font-family: Verdana;
+        }
+    </style>
+
+    <!-- optional: mobile support with jqueryui-touch-punch -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+</head>
+<body>
+    <script type="text/javascript">
+        // This example loads data from the HTML table below.
+        $(function () {
+            $("#output").pivotUI($("#input"),
+                {
+                    rows: ["Öğrenci"],
+                    cols: ["Soru"]
+                });
+        });
+    </script>
+
+    <div id="output" style="margin: 30px;"></div>
+
+
+    <table id="input" class="table table-bordered m-3">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Öğrenci</th>
+                <th scope="col">Soru</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Mpms)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Ogrenci</td>
+                    <td>@item.Soru</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
